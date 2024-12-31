@@ -15,14 +15,3 @@ Then("I should see the inventory page", () => {
   cy.get(".title").should("contain.text", "Products");
 });
 
-Given("I visit the SauceDemo login page", () => {
-  cy.visit("/");
-});
-
-When("I enter {string} and {string}", (username, password) => {
-  cy.get("#user-name").type(username);
-  cy.get("#password").type(password);
-  cy.get("#login-button").click();
-});
-
-Then("I should see an error message", ())
