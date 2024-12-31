@@ -26,6 +26,8 @@ module.exports = defineConfig({
     },
     stepDefinitions: "cypress/support/step_definitions/**/*.{js,mjs,ts,tsx}",
     baseUrl: "https://www.saucedemo.com",
-    chromeWebSecurity: false
+    chromeWebSecurity: false,
+    testIsolation:false,
+
   },
 });
