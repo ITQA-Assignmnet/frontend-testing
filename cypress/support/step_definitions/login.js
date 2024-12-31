@@ -4,9 +4,9 @@ Given("I visit the login page", () => {
   cy.visit("/");
 });
 
-When("I enter valid credentials", () => {
-  cy.get("#user-name").type("standard_user");
-  cy.get("#password").type("secret_sauce");
+When("I enter {string} and {string}", (username, password) => {
+  cy.get("#user-name").type(username);
+  cy.get("#password").type(password);
   cy.get("#login-button").click();
 });
 
@@ -14,3 +14,15 @@ Then("I should see the inventory page", () => {
   cy.url().should("include", "/inventory.html");
   cy.get(".title").should("contain.text", "Products");
 });
+
+Given("I visit the SauceDemo login page", () => {
+  cy.visit("/");
+});
+
+When("I enter {string} and {string}", (username, password) => {
+  cy.get("#user-name").type(username);
+  cy.get("#password").type(password);
+  cy.get("#login-button").click();
+});
+
+Then("I should see an error message", ())
