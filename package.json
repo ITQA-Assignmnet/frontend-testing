@@ -1,0 +1,32 @@
+{
+  "name": "library-system-testing",
+  "version": "1.0.0",
+  "description": "ITQA Assignment",
+  "keywords": [
+    "itqa"
+  ],
+  "homepage": "https://github.com/ErangaVishwanath/ITQA#readme",
+  "bugs": {
+    "url": "https://github.com/ErangaVishwanath/ITQA/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErangaVishwanath/ITQA.git"
+  },
+  "license": "ISC",
+  "author": "Vishwanath",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^21.0.3",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
+    "@cypress/browserify-preprocessor": "^3.0.2",
+    "cypress": "^13.17.0"
+  },
+  "dependencies": {
+    "library-system-testing": "file:"
+  }
+}
