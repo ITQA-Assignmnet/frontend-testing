@@ -17,6 +17,11 @@
 import './commands';
 import "@badeball/cypress-cucumber-preprocessor";
 
-Cypress.Cookies.defaults({
-  preserve: "session-username",
+beforeEach(() => {
+    cy.session('session_id', () => {
+        cy.visit('https://www.saucedemo.com/')
+        cy.get('#user-name').type('standard_user')
+        cy.get('#password').type('secret_sauce')
+        cy.get('#login-button').click()
+    });
 });
