@@ -15,3 +15,13 @@ Then("I should see the inventory page", () => {
   cy.get(".title").should("contain.text", "Products");
 });
 
+Then("I should see an error message", () => {
+  cy.get(".error-button").should("be.visible");
+  cy.get('[data-test="error"]').should("contain.text", "Epic sadface: Username and password do not match any user in this service");
+});
+
+Then("I should see an error message for locked user", () => {
+  cy.get(".error-button").should("be.visible");
+  cy.get('[data-test="error"]').should("contain.text", "Epic sadface: Sorry, this user has been locked out.");
+});
+

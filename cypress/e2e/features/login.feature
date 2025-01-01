@@ -9,8 +9,21 @@ Examples:
   | username       | password     |
   | standard_user  | secret_sauce |
 
-Scenario: Error message for invalid credentials
-  Given I visit the SauceDemo login page
+Scenario: Login with invalid credentials
+  Given I visit the login page
   When I enter "<username>" and "<password>"
   Then I should see an error message
+
+Examples:
+  | username       | password     |
+  | hiru  | secret_hiru |
+
+Scenario: Locked out user login
+  Given I visit the login page
+  When I enter "<username>" and "<password>"
+  Then I should see an error message for locked user
+
+  Examples:
+  | username       | password     |
+  | locked_out_user | secret_sauce |
 
