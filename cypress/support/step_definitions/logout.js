@@ -1,14 +1,18 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-Given("I visit the sidebar", () => {
-    cy.visit("/inventory.html");  
+Given("I am logged in as a standard user", () => {
+    cy.visit('/');
+    cy.get('#user-name').type('standard_user'); 
+    cy.get('#password').type('secret_sauce');  
+    cy.get('#login-button').click();           
+    cy.url().should('include', '/inventory.html'); 
 });
 
 When("I click the menu icon", () => {
     cy.get(".bm-burger-button").click(); 
 });
 
-Then("the sidebar should be displayed", () => {
+Then("The sidebar should be displayed", () => {
     cy.get(".bm-menu").should("be.visible"); 
 });
 
@@ -17,5 +21,12 @@ When("I click the logout button", () => {
 });
 
 Then("I should be navigated to the login page", () => {
-    cy.visit("/"); 
+    cy.url().should("include", "/"); 
+    cy.get("#login-button").should("be.visible"); 
 });
+
+
+
+
+
+
