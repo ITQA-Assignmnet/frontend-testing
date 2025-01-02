@@ -9,6 +9,7 @@ Examples:
   | username       | password     |
   | standard_user  | secret_sauce |
 
+
 Scenario: Login with invalid credentials
   Given I visit the login page
   When I enter "<username>" and "<password>"
