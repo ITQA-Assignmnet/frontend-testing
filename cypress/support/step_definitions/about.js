@@ -21,7 +21,14 @@ When("I click the about button", () => {
 });
 
 Then("I should be navigated to the about page", () => {
+    cy.origin("https://saucelabs.com", () => {
+        cy.on('uncaught:exception', (err) => {
+            // Suppress uncaught exceptions related to 'TenantFeatures'
+            if (err.message.includes('TenantFeatures')) {
+                return false; // Prevent test failure
+            }
+        });
+    });
+
     cy.url().should("include", "https://saucelabs.com");
-      
-   
 });
