@@ -1,6 +1,6 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-Given("I visit the inventory page as a registered user", () => {
+Given("I visit inventory page as registered user to sort items", () => {
     cy.visit('/'); 
     cy.get('#user-name').type('standard_user'); 
     cy.get('#password').type('secret_sauce'); 
@@ -38,10 +38,11 @@ When("I enter 'Name Z to A'", () => {
 });
 
 Then("The items name should list according to Z to A", () => {
-    let previousName = '';
+    let previousName = 'ZZZZZZZ'; // Start with a very high alphabetical value
     cy.get('.inventory_item_name').each(($el) => {
-        const currentName = $el.text();
-        expect(currentName.localeCompare(previousName)).to.be.lte(0); 
+        const currentName = $el.text().trim();
+        cy.log(`Previous: ${previousName}, Current: ${currentName}`);
+        expect(currentName.localeCompare(previousName)).to.be.lte(0); // Z-A
         previousName = currentName;
     });
 });
