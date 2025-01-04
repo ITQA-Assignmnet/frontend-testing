@@ -18,12 +18,16 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "cypress open"
+    "test": "npx cypress open",
+    "cypress:run": "cypress run --env allure=true",
+    "allure:generate": "allure generate allure-results",
+    "allure:open": "allure open allure-report"
   },
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^21.0.3",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
     "@cypress/browserify-preprocessor": "^3.0.2",
+    "@shelex/cypress-allure-plugin": "^2.40.2",
     "cypress": "^13.17.0"
   },
   "dependencies": {
