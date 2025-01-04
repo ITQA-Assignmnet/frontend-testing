@@ -10,7 +10,6 @@ Given('I log in as a standard user for check cart functionality', () => {
   });
 
 When('I add an item to the cart', () => {
-  // Replace with the selector for your "Add to Cart" button
   cy.get('#add-to-cart-sauce-labs-backpack').first().click();
 });
 
@@ -22,7 +21,7 @@ Then('the cart number should increase by {int} in inventory page', (increment) =
       const currentCartNumber = parseInt(text, 10);
       const expectedCartNumber = 0 + increment;
       expect(currentCartNumber).to.eq(expectedCartNumber);
-      Cypress.env('previousCartNumber', currentCartNumber); // Save the updated cart number
+      Cypress.env('previousCartNumber', currentCartNumber); 
     });
 });
 When('I add another item to the cart', () => {
