@@ -12,4 +12,5 @@ Feature: Checkout Form Validation
     Given I am logged in as a standard user
     When I navigate to the checkout form
     Then I submit the form with valid data
+    
 
