@@ -1,0 +1,64 @@
+name: End-to-end tests
+
+on: push
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Step 2: Ensure lockfile is present
+      - name: Check for lockfile
+        run: |
+          if [ ! -f package-lock.json ] && [ ! -f yarn.lock ]; then
+            echo "Error: Missing package manager lockfile."
+            exit 1
+          fi
+
+      # Step 3: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      # Step 4: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 5: Install Allure Commandline
+      - name: Install Allure Commandline
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y default-jre
+          curl -sL https://github.com/allure-framework/allure2/releases/download/2.20.1/allure-2.20.1.tgz | tar -xz -C /opt/
+          sudo ln -s /opt/allure-2.20.1/bin/allure /usr/bin/allure
+
+      # Step 6: Run Cypress tests with Allure
+      - name: Run Cypress Tests
+        run: npm run cypress:execution-allure
+        continue-on-error: true
+
+      # Step 7: Generate Allure Report
+      - name: Generate Allure Report
+        run: npm run allure:report
+
+      # Step 8: Deploy Allure Report to GitHub Pages
+      - name: Deploy Allure Report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-report
+          user_name: "ErangaVishwanath"
+          user_email: "vishwanathgle.20@itfac.mrt.ac.lk"

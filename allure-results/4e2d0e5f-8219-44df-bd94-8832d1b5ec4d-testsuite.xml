@@ -1,0 +1,22 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1736050948502' stop='1736050948710'>
+    <name>Add to Cart</name>
+    <title>Add to Cart</title>
+    <test-cases>
+        <test-case start='1736050948525' status='broken' stop='1736050948706'>
+            <name>Add an item to the cart</name>
+            <title>Add an item to the cart</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>cy.login is not a function</message>
+                <stack-trace>TypeError: cy.login is not a function
+                    at Context.eval (cypress/e2e/TestCases/addcart/addcart.js:11:5)
+                    at Context.resolveAndRunStepDefinition (node_modules/cypress-cucumber-preprocessor/lib/resolveStepDefinition.js:193:0)
+                    at Context.eval (node_modules/cypress-cucumber-preprocessor/lib/createTestFromScenario.js:27:0)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>
