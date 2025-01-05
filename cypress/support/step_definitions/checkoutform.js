@@ -17,10 +17,10 @@ Given('I am logged in as a standard user', () => {
   cy.get(SELECTORS.username).type('standard_user');
   cy.get(SELECTORS.password).type('secret_sauce');
   cy.get(SELECTORS.loginButton).click();
-  cy.url().should('include', '/inventory'); // Verify successful login
+  cy.url().should('include', '/inventory'); 
 });
 
-//Test 14
+//Testcase 14
 When('I navigate to the checkout form', () => {
     cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click();
     cy.get('[data-test="shopping-cart-link"]').click();
@@ -28,7 +28,7 @@ When('I navigate to the checkout form', () => {
     cy.url().should('include', '/checkout-step-one');
   });
   
-//Test 15
+//Testcase 15
   Then('I submit the form with invalid data', () => {
     cy.get(SELECTORS.firstName).clear(); // Leave first name blank
     cy.get(SELECTORS.lastName).type('Doe'); // Provide last name only
@@ -39,7 +39,7 @@ When('I navigate to the checkout form', () => {
       .and('have.text', 'Error: First Name is required');
   });
 
-//Test 16
+//Testcase 16
   
   Then('I submit the form with valid data', () => {
     cy.get(SELECTORS.firstName).type('John');
